@@ -32,3 +32,12 @@ func main() {
     router.Run(":8080")
 }
 ```
+## Development
+* Issues: Just create issues on github
+* Enhancements/Bugfixes: Pull requests are welcome
+* get in contact: mailto:team-techmonkeys@zalando.de
+* see [MAINTAINERS](https://github.com/zalando-techmonkeys/gin-glog/blob/master/MAINTAINERS)
+file.
+
+## License
+see [LICENSE](https://github.com/zalando-techmonkeys/gin-glog/blob/master/LICENSE) file.
