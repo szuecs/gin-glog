@@ -60,7 +60,7 @@ func Logger(duration time.Duration) gin.HandlerFunc {
 		path := c.Request.URL.Path
 
 		switch {
-		case status >= 400 && status <= 499:
+		case statusCode >= 400 && statusCode <= 499:
 			{
 				glog.Warningf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
 					statusColor, statusCode, reset,
@@ -71,7 +71,7 @@ func Logger(duration time.Duration) gin.HandlerFunc {
 					c.Errors.String(),
 				)
 			}
-		case status == 500:
+		case statusCode == 500:
 			{
 				glog.Errorf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
 					statusColor, statusCode, reset,
