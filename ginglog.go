@@ -57,15 +57,41 @@ func Logger(duration time.Duration) gin.HandlerFunc {
 		statusCode := c.Writer.Status()
 		statusColor := colorForStatus(statusCode)
 		methodColor := colorForMethod(method)
+		path := c.Request.URL.Path
 
-		glog.V(2).Infof("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
-			statusColor, statusCode, reset,
-			latency,
-			clientIP,
-			methodColor, reset, method,
-			c.Request.URL.Path,
-			c.Errors.String(),
-		)
+		switch {
+		case statusCode >= 400 && statusCode <= 499:
+			{
+				glog.Warningf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
+					statusColor, statusCode, reset,
+					latency,
+					clientIP,
+					methodColor, reset, method,
+					path,
+					c.Errors.String(),
+				)
+			}
+		case statusCode == 500:
+			{
+				glog.Errorf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
+					statusColor, statusCode, reset,
+					latency,
+					clientIP,
+					methodColor, reset, method,
+					path,
+					c.Errors.String(),
+				)
+			}
+		default:
+			glog.V(2).Infof("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
+				statusColor, statusCode, reset,
+				latency,
+				clientIP,
+				methodColor, reset, method,
+				path,
+				c.Errors.String(),
+			)
+		}
 
 	}
 }
