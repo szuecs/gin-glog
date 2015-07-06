@@ -3,6 +3,8 @@
 [glog](https://github.com/golang/glog). It is meant as drop in
 replacement for the default logger used in gin.
 
+[![Build Status](https://travis-ci.org/zalando-techmonkeys/gin-glog.svg?branch=master)](https://travis-ci.org/zalando-techmonkeys/gin-glog)
+
 ## Usage
 ### Example
 
