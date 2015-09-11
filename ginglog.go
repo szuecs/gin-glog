@@ -1,7 +1,8 @@
 // Package ginglog provides a logging middleware to get
-// github.com/golang/glog as logging library for
-// github.com/gin-gonic/gin. It can be used as replacement for the
-// internal logging middleware.
+// https://github.com/golang/glog as logging library for
+// https://github.com/gin-gonic/gin. It can be used as replacement for
+// the internal logging middleware
+// http://godoc.org/github.com/gin-gonic/gin#Logger.
 //
 // Example:
 //    package main
@@ -22,7 +23,8 @@
 //        router.Run(":8080")
 //    }
 //
-// Your service will get new command line parameters from github.com/golang/glog.
+// Your service will get new command line parameters from
+// https://github.com/golang/glog.
 package ginglog
 
 import (
@@ -69,8 +71,8 @@ func ErrorLoggerT(typ gin.ErrorType) gin.HandlerFunc {
 }
 
 // Logger prints a logline for each request and measures the time to
-// process for a call. It formats the log entries similar to Logger() from
-// github.com/gin-gonic/gin/logger does.
+// process for a call. It formats the log entries similar to
+// http://godoc.org/github.com/gin-gonic/gin#Logger does.
 //
 // Example:
 //        router := gin.New()
