@@ -103,7 +103,7 @@ func Logger(duration time.Duration) gin.HandlerFunc {
 					c.Errors.String(),
 				)
 			}
-		case statusCode == 500:
+		case statusCode >= 500:
 			{
 				glog.Errorf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
 					statusColor, statusCode, reset,
