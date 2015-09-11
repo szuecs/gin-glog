@@ -6,6 +6,10 @@ replacement for the default logger used in gin.
 [![Build Status](https://travis-ci.org/zalando-techmonkeys/gin-glog.svg?branch=master)](https://travis-ci.org/zalando-techmonkeys/gin-glog)
 [![Coverage Status](https://coveralls.io/repos/zalando-techmonkeys/gin-glog/badge.svg?branch=master&service=github)](https://coveralls.io/github/zalando-techmonkeys/gin-glog?branch=master)
 
+## Documentation
+
+[godoc](http://godoc.org/github.com/zalando-techmonkeys/gin-glog)
+
 ## Usage
 ### Example
 
