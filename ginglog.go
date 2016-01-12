@@ -36,7 +36,7 @@ import (
 
 func setupLogging(duration time.Duration) {
 	go func() {
-		for _ = range time.Tick(duration) {
+		for range time.Tick(duration) {
 			glog.Flush()
 		}
 	}()
@@ -53,10 +53,13 @@ var (
 	reset   = string([]byte{27, 91, 48, 109})
 )
 
+// ErrorLogger returns an ErrorLoggerT with parameter gin.ErrorTypeAny
 func ErrorLogger() gin.HandlerFunc {
 	return ErrorLoggerT(gin.ErrorTypeAny)
 }
 
+// ErrorLoggerT returns an ErrorLoggerT middleware with the given
+// type gin.ErrorType.
 func ErrorLoggerT(typ gin.ErrorType) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Next()
