@@ -1,12 +1,24 @@
 package ginglog
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 const checkMark = "\u2713"
 const ballotX = "\u2717"
+
+func Test_ErrorLogger(t *testing.T) {
+	middleware := ErrorLogger()
+	assert.NotNil(t, middleware, "Can't get ErrorLogger middleware")
+}
+
+func Test_Logger(t *testing.T) {
+	middleware := Logger(1 * time.Second)
+	assert.NotNil(t, middleware, "Can't get Logger middleware")
+}
 
 func Test_colorForMethod(t *testing.T) {
 	colors := map[string]string{
