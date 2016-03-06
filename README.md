@@ -1,28 +1,63 @@
-# gin-glog
+# Gin-Glog
+
 [Gin](https://github.com/gin-gonic/gin) middleware for Logging with
 [glog](https://github.com/golang/glog). It is meant as drop in
-replacement for the default logger used in gin.
+replacement for the default logger used in Gin.
 
 [![Build Status](https://travis-ci.org/zalando-techmonkeys/gin-glog.svg?branch=master)](https://travis-ci.org/zalando-techmonkeys/gin-glog)
 [![Coverage Status](https://coveralls.io/repos/zalando-techmonkeys/gin-glog/badge.svg?branch=master&service=github)](https://coveralls.io/github/zalando-techmonkeys/gin-glog?branch=master)
 [![Go Report Card](http://goreportcard.com/badge/zalando-techmonkeys/gin-glog)](http://goreportcard.com/report/zalando-techmonkeys/gin-glog)
+[![GoDoc](https://godoc.org/github.com/zalando-techmonkeys/gin-glog?status.svg)](http://godoc.org/github.com/zalando-techmonkeys/gin-glog)
 
-## Documentation
+## Project Context and Features
 
-[godoc](http://godoc.org/github.com/zalando-techmonkeys/gin-glog)
+When it comes to choosing a Go framework, there's a lot of confusion
+about what to use. The scene is very fragmented, and detailed
+comparisons of different frameworks are still somewhat rare. Meantime,
+how to handle dependencies and structure projects are big topics in
+the Golang community. We've liked using Gin for its speed,
+accessibility, and usefulness in developing microservice
+architectures. In creating Gin-Glog, we wanted to take fuller
+advantage of [Gin](https://github.com/gin-gonic/gin)'s capabilities
+and help other devs do likewise.
+
+Gin-Glog replaces the default logger of [Gin](https://github.com/gin-gonic/gin) to use
+[Glog](https://github.com/golang/glog).
+
+## How Glog is different compared to other loggers
+
+Glog is an efficient pure Go implementation of leveled logs. If you
+use Glog, you do not use blocking calls for writing logs. A goroutine
+in the background will flush queued loglines into appropriate
+logfiles. It provides logrotation, maintains symlinks to current files
+and creates flags to your command line interface.
+
+## Requirements
+
+Gin-Glog uses the following [Go](https://golang.org/) packages as
+dependencies:
+
+- github.com/gin-gonic/gin
+- github.com/golang/glog
+
+## Installation
+
+Assuming you've installed Go and Gin, run this:
+
+    go get github.com/zalando-techmonkeys/gin-glog
 
 ## Usage
 ### Example
 
 Start your webapp to log to STDERR and /tmp:
 
-    % ./webapp -log_dir="/tmp" -logtostderr -v=2
+    % ./webapp -log_dir="/tmp" -alsologtostderr -v=2
 
 ```go
 package main
 
 import (
-    "flag
+    "flag"
     "time"
 
     "github.com/golang/glog"
@@ -36,16 +71,71 @@ func main() {
     router.Use(ginglog.Logger(3 * time.Second))
     //..
     router.Use(gin.Recovery())
-    glog.Info("bootstrapped application")
+
+    glog.Warning("warning")
+    glog.Error("err")
+    glog.Info("info")
+    glog.V(2).Infoln("This line will be printed if you use -v=N with N >= 2.")
+
     router.Run(":8080")
 }
 ```
-## Development
-* Issues: Just create issues on github
-* Enhancements/Bugfixes: Pull requests are welcome
+
+STDERR output of the example above. Lines with prefix "[Gin-Debug]"
+are hardcoded output of Gin and will not appear in your logfile:
+
+    [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+     - using env:   export GIN_MODE=release
+     - using code:  gin.SetMode(gin.ReleaseMode)
+
+    W0306 16:37:12.836001     367 main.go:18] warning
+    E0306 16:37:12.836335     367 main.go:19] err
+    I0306 16:37:12.836402     367 main.go:20] info
+    I0306 16:26:33.901278   32538 main.go:19] This line will be printed if you use -v=N with N >= 2.
+    [GIN-debug] Listening and serving HTTP on :8080
+
+
+## Synopsis
+
+Glog will add the following flags to your binary:
+
+    -alsologtostderr
+          log to standard error as well as files
+    -log_backtrace_at value
+          when logging hits line file:N, emit a stack trace (default :0)
+    -log_dir string
+          If non-empty, write log files in this directory
+    -logtostderr
+          log to standard error instead of files
+    -stderrthreshold value
+          logs at or above this threshold go to stderr
+    -v value
+          log level for V logs
+    -vmodule value
+          comma-separated list of pattern=N settings for file-filtered logging
+
+
+## Contributing/TODO
+
+We welcome contributions from the community; just submit a pull
+request. To help you get started, here are some items that we'd love
+help with:
+
+- Remove hardcoded logs in [Gin](https://github.com/gin-gonic/gin)
+- the code base
+
+If you need to:
+
+* create an issue: please create them on github
 * get in contact: team-techmonkeys@zalando.de
-* see [MAINTAINERS](https://github.com/zalando-techmonkeys/gin-glog/blob/master/MAINTAINERS)
-file.
+* a list of [MAINTAINERS](MAINTAINERS)
+
+## Contributors
+
+Thanks to:
+
+- <your name>
 
 ## License
-see [LICENSE](https://github.com/zalando-techmonkeys/gin-glog/blob/master/LICENSE) file.
+
+See [LICENSE](LICENSE) file.
