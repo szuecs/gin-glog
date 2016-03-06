@@ -134,7 +134,7 @@ If you need to:
 
 Thanks to:
 
-- <your name>
+- &lt;your name&gt;
 
 ## License
 
