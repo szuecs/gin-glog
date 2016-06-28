@@ -6,8 +6,8 @@ replacement for the default logger used in Gin.
 
 [![Build Status](https://travis-ci.org/zalando-techmonkeys/gin-glog.svg?branch=master)](https://travis-ci.org/zalando-techmonkeys/gin-glog)
 [![Coverage Status](https://coveralls.io/repos/zalando-techmonkeys/gin-glog/badge.svg?branch=master&service=github)](https://coveralls.io/github/zalando-techmonkeys/gin-glog?branch=master)
-[![Go Report Card](http://goreportcard.com/badge/zalando-techmonkeys/gin-glog)](http://goreportcard.com/report/zalando-techmonkeys/gin-glog)
-[![GoDoc](https://godoc.org/github.com/zalando-techmonkeys/gin-glog?status.svg)](http://godoc.org/github.com/zalando-techmonkeys/gin-glog)
+[![Go Report Card](https://goreportcard.com/badge/zalando-techmonkeys/gin-glog)](https://goreportcard.com/report/zalando-techmonkeys/gin-glog)
+[![GoDoc](https://godoc.org/github.com/zalando-techmonkeys/gin-glog?status.svg)](https://godoc.org/github.com/zalando-techmonkeys/gin-glog)
 
 ## Project Context and Features
 
