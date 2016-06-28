@@ -4,10 +4,10 @@
 [glog](https://github.com/golang/glog). It is meant as drop in
 replacement for the default logger used in Gin.
 
-[![Build Status](https://travis-ci.org/zalando-techmonkeys/gin-glog.svg?branch=master)](https://travis-ci.org/zalando-techmonkeys/gin-glog)
-[![Coverage Status](https://coveralls.io/repos/zalando-techmonkeys/gin-glog/badge.svg?branch=master&service=github)](https://coveralls.io/github/zalando-techmonkeys/gin-glog?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/zalando-techmonkeys/gin-glog)](https://goreportcard.com/report/zalando-techmonkeys/gin-glog)
-[![GoDoc](https://godoc.org/github.com/zalando-techmonkeys/gin-glog?status.svg)](https://godoc.org/github.com/zalando-techmonkeys/gin-glog)
+[![Build Status](https://travis-ci.org/zalando/gin-glog.svg?branch=master)](https://travis-ci.org/zalando/gin-glog)
+[![Coverage Status](https://coveralls.io/repos/zalando/gin-glog/badge.svg?branch=master&service=github)](https://coveralls.io/github/zalando/gin-glog?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/zalando/gin-glog)](https://goreportcard.com/report/zalando/gin-glog)
+[![GoDoc](https://godoc.org/github.com/zalando/gin-glog?status.svg)](https://godoc.org/github.com/zalando/gin-glog)
 
 ## Project Context and Features
 
@@ -44,7 +44,7 @@ dependencies:
 
 Assuming you've installed Go and Gin, run this:
 
-    go get github.com/zalando-techmonkeys/gin-glog
+    go get github.com/zalando/gin-glog
 
 ## Usage
 ### Example
@@ -61,7 +61,7 @@ import (
     "time"
 
     "github.com/golang/glog"
-    "github.com/zalando-techmonkeys/gin-glog"
+    "github.com/zalando/gin-glog"
     "github.com/gin-gonic/gin"
 )
 
