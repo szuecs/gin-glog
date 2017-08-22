@@ -10,7 +10,7 @@
 //        "flag
 //        "time"
 //        "github.com/golang/glog"
-//        "github.com/zalando/gin-glog"
+//        "github.com/szuecs/gin-glog"
 //        "github.com/gin-gonic/gin"
 //    )
 //    func main() {
