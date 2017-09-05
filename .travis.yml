@@ -1,12 +1,17 @@
+os:
+- linux
+
 language: go
+
 go:
-  - 1.7
-  - 1.8
-  - tip
+- 1.8.4
+- 1.9
+- tip
+
 before_install:
-  - go get github.com/axw/gocov/gocov
-  - go get github.com/mattn/goveralls
-  - if ! go get code.google.com/p/go.tools/cmd/cover; then go get golang.org/x/tools/cmd/cover; fi
+- go get github.com/mattn/goveralls
+
 script:
-    - $HOME/gopath/bin/goveralls -service=travis-ci
+- go test -race -v ./...
+- $HOME/gopath/bin/goveralls -service=travis-ci
 
